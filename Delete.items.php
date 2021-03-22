@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Deleting item...</title>
-</head>
+<?php $pageTitle = "Household List";
+include 'header.php';
+?>
 <h1>Item Deleted</h1>
 <body>
 <?php
@@ -30,7 +27,7 @@ if (is_numeric($_GET['categoryId'])) {
 }
 
 // redirect to the updated items.php page. if no numeric itemId URL param, just reload anyway
-//header('Location:Household.php');
+//header('Location:HouseholdTable.php');
 ?>
 
 </body>
