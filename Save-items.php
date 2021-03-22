@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Save House hold Item</title>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-    <!--
-    <style>
-        body{
-            background-color: #6a1a21;
-            color: white;
-        }
-    </style>
-    -->
+<?php $pageTitle = "Household List";
+include 'header.php';
+?>
 </head>
 <body>
 <?php
