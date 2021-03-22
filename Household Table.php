@@ -5,7 +5,7 @@ include 'header.php';
 <a href="Household-items.php"> Add an item</a>
 <?php
 // 1. Connect to the db.
-$db = new PDO('mysql:host=172.31.22.43;dbname=Shazil1124389','Shazil1124389','pZYTCNYbba');
+include 'db.php';
 
 //2. SQL select query
 $sql = "SELECT * FROM Familyhousehold";
@@ -20,16 +20,21 @@ $Familyhousehold = $cmd->fetchAll();
 //  See https://www.php.net/manual/en/control-structures.foreach.php for details.
 // start an HTML table for formatting BEFORE the foreach loop
 
-echo '<table class="table table-striped table-light"><thead><th>First Name<th>Last Name</th></th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th></thead>';
+echo '<table class="table table-striped table-light"><thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th><th>Actions</th></thead>';
 
     foreach ($Familyhousehold as $indFamilyhousehold)
     {
         echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
         <td>' . $indFamilyhousehold['lastname'] . '</td>
         <td>' . $indFamilyhousehold['itemname'] . '</td>
-        <td>' . $indFamilyhousehold['numberofitem'] .'</td>
-        <td>' . $indFamilyhousehold['category'] .'</td></tr>';
-
+        <td>' . $indFamilyhousehold['numberofitem'] . '</td>
+         <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+            '">' . $indFamilyhousehold['category'] . '</a></td>
+        <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+            '" class="btn btn-secondary">Edit</a>&nbsp;
+                <a href="Delete.items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+            '" class="btn btn-danger" title="Delete"
+                onclick="return confirmDelete();">Delete</a></td></tr>';
     }
 
     // close the table

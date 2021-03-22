@@ -47,7 +47,7 @@ if (empty($category)) {
 
 
 //Database Conection
-$db = new PDO('mysql:host=172.31.22.43;dbname=Shazil1124389','Shazil1124389','pZYTCNYbba');
+include 'db.php';
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $sql = "INSERT INTO Familyhousehold (firstname, lastname, itemname, numberofitem, category) 
         VALUES (:firstname, :lastname, :itemname, :numberofitem, :category)";

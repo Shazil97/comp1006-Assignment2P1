@@ -28,7 +28,7 @@ include 'header.php';
         <select name="category" id="category">
             <?php
         //DB connect
-       $db = new PDO('mysql:host=172.31.22.43;dbname=Shazil1124389','Shazil1124389','pZYTCNYbba');
+            include 'db.php';
        //Write the query
        $sql = "Select categoryId, category FROM category";
       //Setup the command, excute query &store the data
