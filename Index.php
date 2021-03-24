@@ -1,7 +1,7 @@
 <?php $pageTitle = 'Welcome!';
 include 'header.php'; ?>
 <main class="container">
-    <h1>Household Items</h1>
+    <h1>Welcome to Household Items</h1>
     <p> All Copyrights© Reserved Under Company Privacy Policy
         @ Lakehead-Georgian.</p>
     <p>This application uses PHP, MySQL, and PDO and is hosted on AWS.</p>

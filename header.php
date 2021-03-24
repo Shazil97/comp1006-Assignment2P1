@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Household Items || <?php echo $pageTitle; ?></title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 
     <!-- link to custom js file to use delete confirmation function -->
