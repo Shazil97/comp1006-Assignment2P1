@@ -1,13 +1,11 @@
-<?php $pageTitle = "Household List";
-include 'header.php';
-?>
-<h1>Item Deleted</h1>
-<body>
 <?php
+$pageTitle = "Deleting...";
+include 'header.php';
+
+
 if (is_numeric($_GET['categoryId'])) {
     // read the itemId from the URL parameter using the $_GET collection
     $categoryId = $_GET['categoryId'];
-
     try {
         // connect
         include 'db.php';
@@ -30,7 +28,5 @@ if (is_numeric($_GET['categoryId'])) {
 //header('Location:HouseholdTable.php');
 ?>
 
-</body>
-</html>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Household Items || <?php echo $pageTitle; ?></title>
+    <title>Household Items || <?php echo $pageTitle; ?></title>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 
@@ -14,25 +14,24 @@
 </head>
 <body>
 <!-- Bootstrap navbar from https://getbootstrap.com/docs/5.0/components/navbar/#nav -->
-<nav class="navbar navbar-expand-lg navbar-dark custom-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">LAMP FOOD</a>
+        <a class="navbar-brand" href="index.php">Household Items</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="items.php">Grocery List</a>
+                    <a class="nav-link active" aria-current="page" href="Household-Table.php">Household List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
+                    <a class="nav-link" href="Household-items.php" method="post" action="Save-items.php">Add new</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="#">Login</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-

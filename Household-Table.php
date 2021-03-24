@@ -2,7 +2,7 @@
 include 'header.php';
 ?>
 <h1>Household-item List</h1>
-<a href="Household-items.php"> Add an item</a>
+<!--<a href="Household-items.php"> Add an item</a> -->
 <?php
 // 1. Connect to the db.
 include 'db.php';

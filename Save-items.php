@@ -1,9 +1,5 @@
-<?php $pageTitle = "Household List";
+<?php $pageTitle = "Saving...";
 include 'header.php';
-?>
-</head>
-<body>
-<?php
 //Store the form inputs in variables (optional but reduces syntax errors)
 $firstname = $_POST['firstname'];
 $lastname= $_POST['lastname'];
