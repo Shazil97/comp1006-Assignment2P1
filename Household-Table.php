@@ -1,7 +1,7 @@
 <?php $pageTitle = "Household List";
 include 'header.php';
 ?>
-<h1>Household-item List</h1>
+<h1>Household Item List</h1>
 <!--<a href="Household-items.php"> Add an item</a> -->
 <?php
 // 1. Connect to the db.
