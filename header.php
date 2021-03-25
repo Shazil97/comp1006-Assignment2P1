@@ -14,7 +14,15 @@
 </head>
 <body>
 <!-- Bootstrap navbar from https://getbootstrap.com/docs/5.0/components/navbar/#nav -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+</nav>
+
+<nav class="navbar navbar-dark bg-primary">
+    <!-- Navbar content -->
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-expand-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="Index.php">Household Items</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +39,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Login</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+

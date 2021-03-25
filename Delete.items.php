@@ -27,6 +27,6 @@ if (is_numeric($_GET['categoryId'])) {
 // redirect to the updated items.php page. if no numeric itemId URL param, just reload anyway
 //header('Location:HouseholdTable.php');
 ?>
-
+<h1>Item Deleted</h1>
 </body>
 </html>
