@@ -22,20 +22,20 @@ $Familyhousehold = $cmd->fetchAll();
 
 echo '<table class="table table-hover table-secondary"><thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th><th>Actions</th></thead>';
 
-    foreach ($Familyhousehold as $indFamilyhousehold)
-    {
-        echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
+foreach ($Familyhousehold as $indFamilyhousehold)
+{
+    echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
         <td>' . $indFamilyhousehold['lastname'] . '</td>
         <td>' . $indFamilyhousehold['itemname'] . '</td>
         <td>' . $indFamilyhousehold['numberofitem'] . '</td>
          <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '">' . $indFamilyhousehold['category'] . '</a></td>
+        '">' . $indFamilyhousehold['category'] . '</a></td>
         <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '" class="btn btn-outline-secondary">Edit</a>&nbsp;
+        '" class="btn btn-outline-secondary">Edit</a>&nbsp;
                 <a href="Delete.items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '" class="btn btn-outline-danger" title="Delete"
+        '" class="btn btn-outline-danger" title="Delete"
                 onclick="return confirmDelete();">Delete</a></td></tr>';
-    }
+}
 
     // close the table
     echo '</table>';
