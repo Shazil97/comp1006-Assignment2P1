@@ -77,7 +77,7 @@ if (!empty($_GET['categoryId'])) {
         </select>
 
     </fieldset>
-
+    <input type="hidden" name="itemId" id="itemId" value="<?php echo $category['categoryId']; ?>" />
     <button type="save" class="btn btn-dark">Save</button>
 </form>
 </main>
