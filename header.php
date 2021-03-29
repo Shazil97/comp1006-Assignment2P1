@@ -37,10 +37,10 @@
                     <a class="nav-link" href="Household-items.php" method="post" action="Save-items.php">Add new</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="save-category.php">Saved Category</a>
+                    <a class="nav-link" href="#">Saved Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="Error404.php">Register</a>
                 </li>
             </ul>
         </div>
