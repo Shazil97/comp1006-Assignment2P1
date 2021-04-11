@@ -40,7 +40,10 @@
                     <a class="nav-link" href="#">Saved Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Error404.php">Register</a>
+                    <a class="nav-link" href="Register.php">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.php">Login</a>
                 </li>
             </ul>
         </div>

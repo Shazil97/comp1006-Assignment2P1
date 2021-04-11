@@ -22,6 +22,7 @@ try {
 //2. SQL select query
     $sql = "SELECT * FROM Familyhousehold";
 
+
 //Excution command
     $cmd = $db->prepare($sql);
     $cmd->execute();
