@@ -14,7 +14,7 @@ include 'header.php';
         echo '<div class="alert alert-info">Please enter your credentials</div>';
     }
     ?>
-    <form method="post" action="validate.php">
+    <form method="post" action="Validate-User.php">
         <fieldset class="form-group">
             <label for="username" class="col-2">Username:</label>
             <input name="username" id="username" required type="email" placeholder="email@email.com" />
