@@ -1,8 +1,7 @@
 <?php
-include 'Restrict.php';
 $pageTitle = "New Household Item ";
 include 'header.php';
-
+include 'Restrict.php';
 // initialize $item variable
 $category = null;
 $category['firstname'] = null;

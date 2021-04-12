@@ -20,7 +20,7 @@ include 'header.php';
             <input type="password" name="confirm" id="confirm" required
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                    onkeyup="return comparePasswords();"/>
-            <span id="pwMsg"></span>
+            <span id="PswMsg"></span>
         </fieldset>
         <div class="offset-3">
             <button class="btn btn-secondary">Register</button>

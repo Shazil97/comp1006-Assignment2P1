@@ -1,6 +1,6 @@
 <?php $pageTitle = "Saving...";
-include 'Restrict.php';
 include 'header.php';
+include 'Restrict.php';
 //Store the form inputs in variables (optional but reduces syntax errors)
 $firstname = $_POST['firstname'];
 $lastname= $_POST['lastname'];

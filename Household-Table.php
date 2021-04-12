@@ -15,8 +15,7 @@ include 'header.php';
 <h1>Household Item List</h1>
 
 <?php
-session_start();
-if(!empty($_Session['username'])){
+if(!empty($_SESSION['username'])){
     echo '<a href="Household-items.php">Add Items</a>';
 }
 // 1. Connect to the db.

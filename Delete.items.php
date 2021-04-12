@@ -1,8 +1,7 @@
 <?php
-include 'Restrict.php';
 $pageTitle = "Deleting...";
 include 'header.php';
-
+include 'Restrict.php';
 
 if (is_numeric($_GET['categoryId'])) {
     // read the itemId from the URL parameter using the $_GET collection

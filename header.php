@@ -33,25 +33,33 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="Household-Table.php">Household List</a>
                 </li>
-                <?php
-                session_start();
-                ?>
-
                 <li class="nav-item">
                     <a class="nav-link" href="Household-items.php" method="post" action="Save-items.php">Add new</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <!--IF ELSE Statement for user authentication either it will see 2 options-->
+                <?php
+                session_start();
+                if (empty($_SESSION['username'])){
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="Register.php">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Login.php">Login</a>
                 </li>
+                <?php
+                }
+                else{
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><?php echo $_SESSION['username']; ?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Logout.php">Logout</a>
                 </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
