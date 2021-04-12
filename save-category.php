@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Saved Category </title>
-</head>
-<body>
+
 <?php
+include 'Restrict.php';
 include "header.php";
 ?>
 <?php

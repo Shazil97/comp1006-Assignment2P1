@@ -13,8 +13,12 @@
 include 'header.php';
 ?>
 <h1>Household Item List</h1>
-<!--<a href="Household-items.php"> Add an item</a> -->
+
 <?php
+session_start();
+if(!empty($_Session['username'])){
+    echo '<a href="Household-items.php">Add Items</a>';
+}
 // 1. Connect to the db.
 try {
     include 'db.php';
@@ -33,21 +37,31 @@ try {
 //  See https://www.php.net/manual/en/control-structures.foreach.php for details.
 // start an HTML table for formatting BEFORE the foreach loop
 
-    echo '<table class="table table-hover table-secondary"><thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th><th>Actions</th></thead>';
+    echo '<table class="table table-hover table-secondary"><thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th>';
+    //use session to restrict the user
+    if (!empty($_SESSION['username'])){
+         echo '<th>Actions</th>';
+    }
+    echo '</thead>';
 
     foreach ($Familyhousehold as $indFamilyhousehold) {
         echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
         <td>' . $indFamilyhousehold['lastname'] . '</td>
         <td>' . $indFamilyhousehold['itemname'] . '</td>
         <td>' . $indFamilyhousehold['numberofitem'] . '</td>
-         <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '">' . $indFamilyhousehold['category'] . '</a></td>
         <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+            '">' . $indFamilyhousehold['category'] . '</a></td>';
+        if (!empty($_SESSION['username'])){
+         echo '<td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
             '" class="btn btn-outline-secondary">Edit</a>&nbsp;
                 <a href="Delete.items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
             '" class="btn btn-outline-danger" title="Delete"
                 onclick="return confirm();">Delete</a></td></tr>';
+                }
+        echo'</tr>';
+
     }
+
 
     // close the table
     echo '</table>';

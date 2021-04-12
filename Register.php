@@ -5,10 +5,10 @@ include 'header.php';
 
 <main class="container">
     <h1>User Registration</h1>
-    <form method="post" action="save-registration.php">
+    <form method="post" action="Save-Registration.php">
         <fieldset class="form-group">
             <label for="username" class="col-2">Username:</label>
-            <input name="username" id="username" required type="email" placeholder="email@email.com" />
+            <input name="username" id="username" required type="email" placeholder="random@email.com" />
         </fieldset>
         <fieldset class="form-group">
             <label for="password" class="col-2">Password:</label>
@@ -23,7 +23,7 @@ include 'header.php';
             <span id="pwMsg"></span>
         </fieldset>
         <div class="offset-3">
-            <button class="btn btn-primary">Register</button>
+            <button class="btn btn-secondary">Register</button>
         </div>
     </form>
 </main>

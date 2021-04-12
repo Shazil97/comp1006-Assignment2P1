@@ -30,7 +30,7 @@ if ($ok) {
     include 'db.php';
 
     //Validator for username to check whether it already exsist or not
-    $sql = "SELECT userId FROM users WHERE username = :username";
+    $sql = "SELECT userId FROM USERS WHERE username = :username";
     $cmd = $db->prepare($sql);
     $cmd->bindParam(':username', $username, PDO::PARAM_STR, 150);
     $cmd->execute();

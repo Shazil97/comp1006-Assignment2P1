@@ -33,17 +33,24 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="Household-Table.php">Household List</a>
                 </li>
+                <?php
+                session_start();
+                ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="Household-items.php" method="post" action="Save-items.php">Add new</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Saved Category</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Register.php">Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><?php echo $_SESSION['username']; ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Logout.php">Logout</a>
                 </li>
             </ul>
         </div>

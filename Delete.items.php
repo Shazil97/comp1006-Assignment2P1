@@ -1,4 +1,5 @@
 <?php
+include 'Restrict.php';
 $pageTitle = "Deleting...";
 include 'header.php';
 

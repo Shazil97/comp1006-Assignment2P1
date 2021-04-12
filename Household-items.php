@@ -1,4 +1,5 @@
 <?php
+include 'Restrict.php';
 $pageTitle = "New Household Item ";
 include 'header.php';
 
