@@ -24,6 +24,7 @@ if ($password != $confirm) {
     $ok = false;
 }
 
+
 if ($ok) {
 
      //DB Connection

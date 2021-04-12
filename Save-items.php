@@ -7,6 +7,7 @@ $lastname= $_POST['lastname'];
 $itemname = $_POST['itemname'];
 $numberofitem = $_POST['numberofitem'];
 $category = $_POST['category'];
+$photo = $_POST['photo'];
 $ok = true;
 
 //validatation inputs before saving
@@ -42,13 +43,31 @@ if (empty($category)) {
     $ok = false;
 }
 
+if (!empty($_FILES['photo']['name'])) {
+    // check that upload is an image
+    $type = mime_content_type($_FILES['photo']['tmp_name']);
+    if ($type != 'image/jpeg' && $type != 'image/png') {
+        echo 'Invalid Picture <br />';
+        $ok = false;
+    }
+    else {
+        // give file a unique name & save to img/item-uploads
+        $photo = session_id() . "-" . $_FILES['photo']['name'];
+        move_uploaded_file($_FILES['photo']['tmp_name'], "imgs/pics-upload/$photo");
+    }
+}
+else {
+    $photo = null; // keep existing photo if nothing uploaded
+}
+
+
 
 //Database Conection
-try {
+//try {
     include 'db.php';
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO Familyhousehold (firstname, lastname, itemname, numberofitem, category) 
-        VALUES (:firstname, :lastname, :itemname, :numberofitem, :category)";
+    $sql = "INSERT INTO Familyhousehold (firstname, lastname, itemname, numberofitem, category, photo) 
+        VALUES (:firstname, :lastname, :itemname, :numberofitem, :category, :photo)";
 
     //Populate the INSERT with variables using a Command variable to prevent SQL Injections
     $cmd = $db->prepare($sql);
@@ -57,16 +76,18 @@ try {
     $cmd->bindParam(':itemname', $itemname, PDO::PARAM_STR, 50);
     $cmd->bindParam(':numberofitem', $numberofitem, PDO::PARAM_INT);
     $cmd->bindParam(':category', $category, PDO::PARAM_STR, 50);
+    $cmd->bindParam(':photo', $photo, PDO::PARAM_STR,50);
 
 //Save & Excute
     $cmd->execute();
 
 
     $db = null;
-}
+/*}
 catch (exception $e){
     header('location:error.php');
 }
+*/
 echo "<h1>Your new item has been saved</h1>";
 
 ?>

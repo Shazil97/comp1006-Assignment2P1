@@ -9,6 +9,7 @@ $category['lastname'] = null;
 $category['itemname'] = null;
 $category['numberofitem'] = null;
 $category['category'] = null;
+$category['photo'] = null;
 
 // check if there's an itemId URL param. If so, fetch this item for edit; if not not, show blank
 if (!empty($_GET['categoryId'])) {
@@ -52,7 +53,6 @@ if (!empty($_GET['categoryId'])) {
     <fieldset>
         <label<label for="numberofitem">Number of items: </label>
         <input name="numberofitem" id="numberofitem" required type="number" min="1" value="<?php echo $category['numberofitem']; ?>"/>
-    </fieldset>
     <fieldset>
 
 
@@ -80,7 +80,10 @@ if (!empty($_GET['categoryId'])) {
 }
             ?>
         </select>
-
+    </fieldset>
+        <fieldset class="form-group">
+            <label for="photo" class="col-2"> Upload Photo:</label>
+        <input name="photo" id="photo" type="file" accept=".jpg, .gif, .jpeg, .png, .doc, .docx" />
     </fieldset>
     <input type="hidden" name="itemId" id="itemId" value="<?php echo $category['categoryId']; ?>" />
     <button type="save" class="btn btn-dark">Save</button>

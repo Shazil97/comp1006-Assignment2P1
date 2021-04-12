@@ -41,7 +41,7 @@ try {
     if (!empty($_SESSION['username'])){
          echo '<th>Actions</th>';
     }
-    echo '</thead>';
+    echo '<th>Photos</th></thead>';
 
     foreach ($Familyhousehold as $indFamilyhousehold) {
         echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
@@ -49,7 +49,8 @@ try {
         <td>' . $indFamilyhousehold['itemname'] . '</td>
         <td>' . $indFamilyhousehold['numberofitem'] . '</td>
         <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '">' . $indFamilyhousehold['category'] . '</a></td>';
+            '">' . $indFamilyhousehold['category'] . '</a></td>
+        <td>'. $indFamilyhousehold['photo'] . '</td>';
         if (!empty($_SESSION['username'])){
          echo '<td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
             '" class="btn btn-outline-secondary">Edit</a>&nbsp;
