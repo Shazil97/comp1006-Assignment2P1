@@ -53,7 +53,7 @@ if (!empty($_FILES['photo']['name'])) {
     else {
         // give file a unique name & save to img/item-uploads
         $photo = session_id() . "-" . $_FILES['photo']['name'];
-        move_uploaded_file($_FILES['photo']['tmp_name'], "imgs/pics-upload/$photo");
+        move_uploaded_file($_FILES['photo']['tmp_name'], "uploads/$photo");
     }
 }
 else {

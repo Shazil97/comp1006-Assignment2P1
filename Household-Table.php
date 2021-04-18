@@ -49,14 +49,14 @@ try {
         <td>' . $indFamilyhousehold['itemname'] . '</td>
         <td>' . $indFamilyhousehold['numberofitem'] . '</td>
         <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '">' . $indFamilyhousehold['category'] . '</a></td>
-        <td>'. $indFamilyhousehold['photo'] . '</td>';
+            '">' . $indFamilyhousehold['category'] . '</a></td>';
         if (!empty($_SESSION['username'])){
          echo '<td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
             '" class="btn btn-outline-secondary">Edit</a>&nbsp;
                 <a href="Delete.items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
             '" class="btn btn-outline-danger" title="Delete"
-                onclick="return confirm();">Delete</a></td></tr>';
+                onclick="return confirm();">Delete</a></td>
+           <td>'. $indFamilyhousehold['photo'] . '</td></tr>';
                 }
         echo'</tr>';
 
