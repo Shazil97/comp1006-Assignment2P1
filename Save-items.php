@@ -7,10 +7,12 @@ $lastname= $_POST['lastname'];
 $itemname = $_POST['itemname'];
 $numberofitem = $_POST['numberofitem'];
 $category = $_POST['category'];
-$photo = $_POST['photo'];
+//$photo = $_POST['photo'];
 $ok = true;
 
-//validatation inputs before saving
+
+
+                      //Validation Inputs before saving
 
 if (empty(trim($firstname))) {
     echo 'firstname is required<br />';
@@ -43,22 +45,30 @@ if (empty($category)) {
     $ok = false;
 }
 
+
+
+                                   //VALIDATION FOR PHOTOS
+
 if (!empty($_FILES['photo']['name'])) {
-    // check that upload is an image
+    // check that upload is an image (type of image) with file extension
     $type = mime_content_type($_FILES['photo']['tmp_name']);
-    if ($type != 'image/jpeg' && $type != 'image/png') {
-        echo 'Invalid Picture <br />';
+    if ($type != 'image/jpeg' && $type != 'image/png' && $type != 'image/jpg' && $type != 'image/gif'
+        && $type != 'image/docx') {
+        echo 'This Photo is Invalid <br />';
         $ok = false;
     }
     else {
-        // give file a unique name & save to img/item-uploads
-        $photo = session_id() . "-" . $_FILES['photo']['name'];
-        move_uploaded_file($_FILES['photo']['tmp_name'], "uploads/$photo");
+        // give file a unique name & save to img/item-uploads with session id
+        $photo = session_id() . "-" . $_FILES['photo']['name'];   //Keep the original name
+        move_uploaded_file($_FILES['photo']['tmp_name'], "img/item-uploads/$photo");  //move the picture from temperary directory to a img Directory
     }
 }
-else {
+else {     //If there is no photo uploaded we will set this to null
     $photo = null; // keep existing photo if nothing uploaded
 }
+
+
+
 
 
 
@@ -76,7 +86,7 @@ else {
     $cmd->bindParam(':itemname', $itemname, PDO::PARAM_STR, 50);
     $cmd->bindParam(':numberofitem', $numberofitem, PDO::PARAM_INT);
     $cmd->bindParam(':category', $category, PDO::PARAM_STR, 50);
-    $cmd->bindParam(':photo', $photo, PDO::PARAM_STR,50);
+    $cmd->bindParam(':photo', $photo, PDO::PARAM_STR,100);
 
 //Save & Excute
     $cmd->execute();

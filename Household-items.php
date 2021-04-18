@@ -37,7 +37,7 @@ if (!empty($_GET['categoryId'])) {
 
 <main class="container">
 <h1> Enter new Household item</h1>
-<form method="post" action="Save-items.php">
+<form method="post" action="Save-items.php" enctype="multipart/form-data">
     <fieldset class="form-group">
         <label<label for="firstname">Firstname: </label>
         <input name="firstname" id="firstname" required value="<?php echo $category['firstname']; ?>" />
