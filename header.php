@@ -42,17 +42,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Household-items.php" method="post" action="Save-items.php">Add new</a>
                 </li>
-                <!--
+
                 <li class="nav-item">
-                    <a class="nav-link" href="save-category.php" method="post" action="cate">Add new Category</a>
+                    <a class="nav-link" href="category-details.php" method="post" action="save-category">Add new Category</a>
                 </li>
-                -->
+
             </ul>
             <ul class="navbar-nav ms-auto">
-                <!--IF ELSE Statement for user authentication either it will see 2 options-->
-                <?php
+                <!--IF ELSE Statement for user authentication either it will see 2 options LOGIN AND REGISTER-->
+               <?php
                 session_start();
-                if (empty($_SESSION['username'])){
+               if (empty($_SESSION['username'])){
                 ?>
                 <li class="nav-item">
                     <a class="nav-link" href="Register.php">Register</a>

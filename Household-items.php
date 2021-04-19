@@ -88,7 +88,7 @@ if (!empty($_GET['categoryId'])) {
             <label for="photo" class="col-2"> Upload Photo:</label>
         <input name="photo" id="photo" type="file" accept=".jpg, .gif, .jpeg, .png, .doc, .docx" />
     </fieldset>
-    <input type="hidden" name="itemId" id="itemId" value="<?php echo $category['categoryId']; ?>" />
+    <input type="hidden" name="itemId" id="itemId" value="<?php echo $category['category']; ?>" />
 
                           <!--CSS for the Image-->
       <input type="hidden" name="currentPhoto" id="currentPhoto" value="<?php echo $category ['photo']; ?>" />

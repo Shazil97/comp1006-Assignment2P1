@@ -1,6 +1,8 @@
 <?php
 // auth check
-include 'auth.php';
+include 'Restrict.php';
+include 'db.php';
+include 'header.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">

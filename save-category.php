@@ -8,7 +8,7 @@
 <?php
 // auth check
 //include 'auth.php';
-//include 'Restrict.php';
+include 'Restrict.php';
 include "header.php";
 ?>
 <?php
