@@ -62,6 +62,7 @@ if (!empty($_GET['categoryId'])) {
         //DB connect
             try {
                 include 'db.php';
+
                 //Write the query
                 $sql = "Select categoryId, category FROM category";
                 //Setup the command, excute query &store the data

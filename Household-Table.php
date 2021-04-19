@@ -21,7 +21,7 @@ if(!empty($_SESSION['username'])){
 }
 ?>
 
-                                           <!--For SEARCH BAR -->
+                                           <!--For SEARCH BAR for KEYWORD & Category-->
                 <!--You dont need to specify any method bcz form is already having GET method
                                       Check for search Criteria FOR SEARCH BAR-->
 <?php
@@ -33,8 +33,24 @@ $keyword = $_GET['keyword'];
 ?>
 <section>
     <form action="Household-Table.php">
-        <input name="keyword" id="keyword" placeholder="Search Term" value="<?php echo $keyword ?>">
+        <input name="keyword" id="keyword" placeholder="Search Term" value="<?php echo $keyword ?>"> <!--For keyword search-->
+        <select name="categoryId" id="categoryId">   <!--for category list-->
+            <?php
+            include 'db.php';
+            //REPEAT THE CODE FOR DROPDOWN MENU FFROM household-items
+            $sql = "Select categoryId, category FROM category";
+            //Setup the command, excute query &store the data
+            $cmd = $db->prepare($sql);
+            $cmd->execute();
+            $category = $cmd->fetchAll();
+
+            foreach ($category as $category) {
+                echo '<option value="' . $category['categoryId'] . '">' . $category['category'] . '</option>';
+            }
+               ?>
+        </select>
         <button class="btn btn-primary"> Search </button>
+        <a class="btn btn-primary" href="Household-Table.php">Clear</a> <!-- Anchor tag for clear button-->
     </form>
 </section>
 
@@ -59,9 +75,10 @@ if ($keyword != null ){
 }
                                 //Excution command with KEYWORD BIND PARAM and WILD CARD
     $cmd = $db->prepare($sql);
+
       if ($keyword != null){
           $keyword = '%' . $keyword . '%';
-          $cmd-> bindParam(':keyword', $keyword, PDO::PARAM_STR, 50);
+          $cmd-> bindParam(':keyword', $keyword, PDO::PARAM_STR, 100);
       }
 
     $cmd->execute();
@@ -69,7 +86,7 @@ if ($keyword != null ){
 
 
 
-if (!$Familyhousehold){        //if statement to check the input keywords are present or not
+if (!$Familyhousehold){          //if statement to check the input keywords are present or not
     echo '<div class="alert alert-danger"> No items found </div>';
     }
 else{
