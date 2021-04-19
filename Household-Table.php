@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        function confirm(){
+        function confirm() {
             return confirm("Are you sure!");
         }
     </script>
@@ -12,60 +12,108 @@
 <?php $pageTitle = "Household List";
 include 'header.php';
 ?>
+
 <h1>Household Item List</h1>
 
 <?php
 if(!empty($_SESSION['username'])){
     echo '<a href="Household-items.php">Add Items</a>';
 }
+?>
+
+                                           <!--For SEARCH BAR -->
+                <!--You dont need to specify any method bcz form is already having GET method
+                                      Check for search Criteria FOR SEARCH BAR-->
+<?php
+$keyword = null;
+if (isset($_GET['keyword'])){
+//If we have a keyword param value in url
+$keyword = $_GET['keyword'];
+}
+?>
+<section>
+    <form action="Household-Table.php">
+        <input name="keyword" id="keyword" placeholder="Search Term" value="<?php echo $keyword ?>">
+        <button class="btn btn-primary"> Search </button>
+    </form>
+</section>
+
+
+
+
+<?php
 // 1. Connect to the db.
 try {
     include 'db.php';
 
+
 //2. SQL select query
-    $sql = "SELECT * FROM Familyhousehold";
+  //  $sql ="SELECT * FROM Familyhousehold";
 
+ $sql = "SELECT Familyhousehold.*, category.category AS category FROM Familyhousehold
+           LEFT OUTER JOIN category on Familyhousehold.category = category.categoryId";
 
-//Excution command
+                                  //In order to search Keyword in SEARCH BAR
+if ($keyword != null ){
+    $sql .= " WHERE Familyhoushold.category LIKE :keyword";
+}
+                                //Excution command with KEYWORD BIND PARAM and WILD CARD
     $cmd = $db->prepare($sql);
+      if ($keyword != null){
+          $keyword = '%' . $keyword . '%';
+          $cmd-> bindParam(':keyword', $keyword, PDO::PARAM_STR, 50);
+      }
+
     $cmd->execute();
     $Familyhousehold = $cmd->fetchAll();
 
-// Use a foreach loop to iterate (cycle) through all the values in the $items variable.
-// Inside this loop, use an echo command to display the name of each item.
-//  See https://www.php.net/manual/en/control-structures.foreach.php for details.
-// start an HTML table for formatting BEFORE the foreach loop
 
-    echo '<table class="table table-hover table-secondary sortable">
-<thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th>';
-    //use session to restrict the user
-    if (!empty($_SESSION['username'])){
-         echo '<th>Actions</th>';
+
+if (!$Familyhousehold){        //if statement to check the input keywords are present or not
+    echo '<div class="alert alert-danger"> No items found </div>';
     }
-    echo '<th>Photos</th></thead>';
+else{
+    // Use a foreach loop to iterate (cycle) through all the values in the $items variable.
+    // Inside this loop, use an echo command to display the name of each item.
+    //  See https://www.php.net/manual/en/control-structures.foreach.php for details.
+    // start an HTML table for formatting BEFORE the foreach loop
 
-    foreach ($Familyhousehold as $indFamilyhousehold) {
-        echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
-        <td>' . $indFamilyhousehold['lastname'] . '</td>
-        <td>' . $indFamilyhousehold['itemname'] . '</td>
-        <td>' . $indFamilyhousehold['numberofitem'] . '</td>
-        <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '">' . $indFamilyhousehold['category'] . '</a></td>';
+
+
+        echo '<table class="table table-hover table-secondary sortable"><thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th>';
+
+        //use session to restrict the user
         if (!empty($_SESSION['username'])){
-         echo '<td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '" class="btn btn-outline-secondary">Edit</a>&nbsp;
-                <a href="Delete.items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
-            '" class="btn btn-outline-danger" title="Delete"
-                onclick="return confirm();">Delete</a></td>
-           <td>'. $indFamilyhousehold['photo'] . '</td></tr>';
-                }
-        echo'</tr>';
-
-    }
+             echo '<th>Actions</th>';
+        }
+        echo '<th>Photos</th></thead>';
 
 
-    // close the table
-    echo '</table>';
+        foreach ($Familyhousehold as $indFamilyhousehold) {
+            echo '<tr><td>' . $indFamilyhousehold['firstname'] . '</td>
+            <td>' . $indFamilyhousehold['lastname'] . '</td>
+            <td>' . $indFamilyhousehold['itemname'] . '</td>
+            <td>' . $indFamilyhousehold['numberofitem'] . '</td>
+            <td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+                '">' . $indFamilyhousehold['category'] . '</a></td>';
+
+
+            if (!empty($_SESSION['username'])){
+             echo '<td><a href="Household-items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+                '" class="btn btn-outline-secondary">Edit</a>&nbsp;
+                    <a href="Delete.items.php?categoryId=' . $indFamilyhousehold['categoryId'] .
+                '" class="btn btn-outline-danger" title="Delete"
+                    onclick="return confirm();">Delete</a></td>
+               <td>'. $indFamilyhousehold['photo'] . '</td></tr>';
+                    }
+            echo'</tr>';
+
+        }
+
+
+        // close the table
+        echo '</table>';
+}
     $db = null;
 }
 catch (exception $e){

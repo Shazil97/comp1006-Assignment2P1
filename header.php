@@ -42,6 +42,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Household-items.php" method="post" action="Save-items.php">Add new</a>
                 </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link" href="save-category.php" method="post" action="cate">Add new Category</a>
+                </li>
+                -->
             </ul>
             <ul class="navbar-nav ms-auto">
                 <!--IF ELSE Statement for user authentication either it will see 2 options-->

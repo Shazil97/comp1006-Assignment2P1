@@ -9,7 +9,7 @@ $category['lastname'] = null;
 $category['itemname'] = null;
 $category['numberofitem'] = null;
 $category['category'] = null;
-//$category['photo'] = null;
+$category['photo'] = null;
 
 // check if there's an itemId URL param. If so, fetch this item for edit; if not not, show blank
 if (!empty($_GET['categoryId'])) {
@@ -21,7 +21,7 @@ if (!empty($_GET['categoryId'])) {
             include 'db.php';
 
             // fetch selected item
-            $sql = "SELECT * FROM Familyhousehold WHERE categoryId = :categoryId";
+            $sql = "SELECT * FROM Familyhousehold WHERE category = :category";
             $cmd = $db->prepare($sql);
             $cmd->bindParam(':categoryId', $categoryId, PDO::PARAM_INT);
             $cmd->execute();

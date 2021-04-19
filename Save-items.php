@@ -7,7 +7,7 @@ $lastname= $_POST['lastname'];
 $itemname = $_POST['itemname'];
 $numberofitem = $_POST['numberofitem'];
 $category = $_POST['category'];
-$photo = $_POST['photo'];
+//$photo = $_POST['photo'];
 $ok = true;
 
 
