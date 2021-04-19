@@ -36,7 +36,8 @@ try {
 //  See https://www.php.net/manual/en/control-structures.foreach.php for details.
 // start an HTML table for formatting BEFORE the foreach loop
 
-    echo '<table class="table table-hover table-secondary"><thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th>';
+    echo '<table class="table table-hover table-secondary sortable">
+<thead><th>First Name<th>Last Name</th><th>Item Name</th></TH><th>Number of Items</th><th>Category</th>';
     //use session to restrict the user
     if (!empty($_SESSION['username'])){
          echo '<th>Actions</th>';
