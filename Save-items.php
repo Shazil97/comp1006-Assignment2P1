@@ -7,7 +7,7 @@ $lastname= $_POST['lastname'];
 $itemname = $_POST['itemname'];
 $numberofitem = $_POST['numberofitem'];
 $category = $_POST['category'];
-//$photo = $_POST['photo'];
+$photo = $_POST['photo'];
 $ok = true;
 
 
@@ -64,7 +64,7 @@ if (!empty($_FILES['photo']['name'])) {
     }
 }
 else {     //If there is no photo uploaded we will set this to null
-    $photo = null; // keep existing photo if nothing uploaded
+    $photo = $_POST['currentPhoto']; //this will keep existing photo if nothing uploaded
 }
 
 
@@ -76,8 +76,15 @@ else {     //If there is no photo uploaded we will set this to null
 //try {
     include 'db.php';
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO Familyhousehold (firstname, lastname, itemname, numberofitem, category, photo) 
+    if (empty($itemId)) {
+        $sql = "INSERT INTO Familyhousehold (firstname, lastname, itemname, numberofitem, category, photo) 
         VALUES (:firstname, :lastname, :itemname, :numberofitem, :category, :photo)";
+
+    }                        //For Editing
+    else{
+        $sql = "UPDATE Familyhousehold SET firstname = :firstname, lastname = :lastname, itemname = :itemname, numberofitem = :numberofitem,
+       category = :category, photo = :photo  WHERE itemId = :itemId";
+    }
 
     //Populate the INSERT with variables using a Command variable to prevent SQL Injections
     $cmd = $db->prepare($sql);

@@ -9,7 +9,7 @@ $category['lastname'] = null;
 $category['itemname'] = null;
 $category['numberofitem'] = null;
 $category['category'] = null;
-$category['photo'] = null;
+//$category['photo'] = null;
 
 // check if there's an itemId URL param. If so, fetch this item for edit; if not not, show blank
 if (!empty($_GET['categoryId'])) {
@@ -81,12 +81,28 @@ if (!empty($_GET['categoryId'])) {
             ?>
         </select>
     </fieldset>
+
+                                      <!--For Image Upload-->
         <fieldset class="form-group">
             <label for="photo" class="col-2"> Upload Photo:</label>
         <input name="photo" id="photo" type="file" accept=".jpg, .gif, .jpeg, .png, .doc, .docx" />
     </fieldset>
     <input type="hidden" name="itemId" id="itemId" value="<?php echo $category['categoryId']; ?>" />
-    <button type="save" class="btn btn-dark">Save</button>
+
+                          <!--CSS for the Image-->
+      <input type="hidden" name="currentPhoto" id="currentPhoto" value="<?php echo $category ['photo']; ?>" />
+
+
+                   <!---Show Current Image THUMBNAIL (uploading image) --->
+        <?php
+        if (!empty($category['photo'])){
+            echo '<img src="img/item-uploads/' . $category['photo'] . '"
+            alt="Item Photo" class="thumbnail offset-2" />';
+        }
+        ?>
+        <div>
+            <button type="save" class="btn btn-dark">Save</button
+        </div>
 </form>
 </main>
 </body>
